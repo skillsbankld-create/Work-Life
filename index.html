@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wellbeing at Work · Skills Bank</title>
+<meta name="description" content="People First Leadership: an interactive video series by Skills Bank.">
+<style>[hidden]{display:none!important} body{margin:0} :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@font-face{font-family:"Anton";font-weight:400;src:url("fonts/anton-latin-400-normal.woff2") format("woff2");font-display:swap}@font-face{font-family:"IBM Plex Sans";font-weight:400;src:url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2");font-display:swap}@font-face{font-family:"IBM Plex Sans";font-weight:500;src:url("fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2");font-display:swap}@font-face{font-family:"IBM Plex Sans";font-weight:600;src:url("fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2");font-display:swap}@font-face{font-family:"IBM Plex Sans";font-weight:700;src:url("fonts/ibm-plex-sans-latin-700-normal.woff2") format("woff2");font-display:swap}
+
+/* Layout: one player stage (16:9) with an overlay layer, a control rail beneath, and a slim progress card. Single committed look: Skills Bank navy. Series version: journey of three modules, XP and badges. */
+:root {
+  --navy: #080828; --navy-2: #11113f; --navy-3: #1b1b5c; --line: rgba(235,244,255,.14);
+  --gold: #FFBC3A; --gold-ink: #2a1d00; --ice: #EBF4FF; --muted: #a9b4d6; --ok: #40BDA9; --bad: #F26444; --blue: #4D88E8;
+  --display: "Anton", "Impact", "Arial Narrow", sans-serif; --body: "IBM Plex Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif; --mono: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+  color-scheme: dark;
+}
+html, body { background: var(--navy); color: var(--ice); }
+body { font-family: var(--body); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 28px; }
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 14px; }
+header { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand .logo { height: 34px; width: auto; flex: none; }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(26px, 4vw, 40px); letter-spacing: .5px; margin: 0; line-height: 1; text-wrap: balance; }
+h1 em { color: var(--gold); font-style: normal; }
+.tag { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+
+/* stage */
+.stage { position: relative; width: 100%; aspect-ratio: 16 / 9; max-width: 100%; background: #000; border-radius: 14px; overflow: hidden; container-type: inline-size; box-shadow: 0 20px 50px rgba(0,0,0,.45); }
+.stage video { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.stage:fullscreen { border-radius: 0; }
+.cap { position: absolute; left: 50%; bottom: 4.5cqw; transform: translateX(-50%); max-width: 62%; text-align: center; font-weight: 700; font-size: clamp(12px, 2.1cqw, 30px); line-height: 1.3; color: #fff; background: rgba(8,8,40,.78); padding: .25em .6em; border-radius: 6px; pointer-events: none; }
+.hot { position: absolute; right: 1.4cqw; bottom: 1.5cqw; display: flex; align-items: center; gap: .45em; font: 600 clamp(10px, 1.2cqw, 17px)/1 var(--body); color: var(--gold-ink); background: var(--gold); border: 2px solid #fff; border-radius: 999px; padding: .55em .95em .55em .55em; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,.4); animation: pulse 1.6s ease-in-out infinite; }
+.hot .plus { display: grid; place-items: center; width: 1.5em; height: 1.5em; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 1.1em; }
+.hot:focus-visible, button:focus-visible { outline: 3px solid var(--ice); outline-offset: 3px; }
+@keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,188,58,.55), 0 8px 24px rgba(0,0,0,.4); } 50% { box-shadow: 0 0 0 12px rgba(255,188,58,0), 0 8px 24px rgba(0,0,0,.4); } }
+.start { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(ellipse at 50% 40%, rgba(35,35,122,.72), rgba(8,8,40,.94)); text-align: center; padding: 4cqw; }
+.start-inner { display: grid; gap: 1.6cqw; justify-items: center; }
+.start h2 { font: 400 clamp(24px, 6cqw, 84px)/1 var(--display); margin: 0; }
+.start h2 em { color: var(--gold); font-style: normal; }
+.start p { margin: 0; color: var(--muted); font-size: clamp(12px, 1.7cqw, 20px); }
+.chips { display: flex; gap: .6em; flex-wrap: wrap; justify-content: center; }
+.chip { font: 700 clamp(10px, 1.3cqw, 15px)/1 var(--mono); letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: .55em .9em; color: var(--ice); }
+.big-play { font: 700 clamp(14px, 2cqw, 24px)/1 var(--body); background: var(--gold); color: var(--gold-ink); border: 0; border-radius: 999px; padding: .9em 1.8em; cursor: pointer; display: inline-flex; gap: .6em; align-items: center; }
+
+/* controls */
+.rail { display: grid; grid-template-columns: auto 1fr auto auto auto; align-items: center; gap: 12px; background: var(--navy-2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+.ib { background: transparent; color: var(--ice); border: 1px solid var(--line); border-radius: 9px; height: 38px; min-width: 38px; padding: 0 10px; cursor: pointer; font: 700 13px/1 var(--body); display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.ib[aria-pressed="true"] { background: var(--navy-3); border-color: var(--gold); color: var(--gold); }
+.time { font: 700 12px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bar { position: relative; height: 34px; cursor: pointer; min-width: 0; touch-action: none; user-select: none; }
+.bar .knob { position: absolute; top: 10px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(242,180,0,.45); pointer-events: none; left: 0; }
+.buf { position: absolute; left: 50%; top: 50%; width: 54px; height: 54px; margin: -27px 0 0 -27px; border-radius: 50%; border: 5px solid rgba(255,255,255,.25); border-top-color: var(--gold); animation: spin .8s linear infinite; pointer-events: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.bar .track { position: absolute; left: 0; right: 0; top: 15px; height: 5px; border-radius: 3px; background: rgba(235,244,255,.16); }
+.bar .fill { position: absolute; left: 0; top: 15px; height: 5px; border-radius: 3px; background: var(--gold); width: 0; }
+.bar .chap { position: absolute; top: 12px; width: 2px; height: 11px; background: rgba(235,244,255,.35); }
+.mk { position: absolute; top: 9px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; border: 2px solid var(--navy-2); cursor: pointer; padding: 0; }
+.mk.ex { background: var(--gold); }
+.mk.q { background: var(--ice); border-radius: 3px; transform: rotate(45deg) scale(.82); }
+.mk.q.done-ok { background: var(--ok); } .mk.q.done-bad { background: var(--bad); }
+.mk.ex.seen { background: transparent; border: 2px solid var(--gold); }
+.status { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; justify-content: space-between; font-size: 13px; color: var(--muted); }
+.status b { color: var(--ice); font-variant-numeric: tabular-nums; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--gold); vertical-align: middle; margin-right: 6px; }
+.dia { display: inline-block; width: 9px; height: 9px; background: var(--ice); transform: rotate(45deg); vertical-align: middle; margin-right: 7px; }
+.chapname { font: 700 12px var(--mono); letter-spacing: 1px; color: var(--gold); text-transform: uppercase; }
+
+/* layers (fixed so they work in fullscreen and on phones) */
+.layer { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(5,5,24,.72); backdrop-filter: blur(3px); overflow: auto; }
+.panel { width: min(760px, 100%); max-height: calc(100% - 8px); overflow: auto; background: var(--navy-2); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 30px 70px rgba(0,0,0,.55); }
+.panel-head { padding: 20px 24px 14px; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+.kicker { font: 600 12px var(--body); letter-spacing: 1.6px; color: var(--gold); text-transform: uppercase; }
+.panel h3 { font: 400 clamp(24px, 4vw, 34px)/1.05 var(--display); margin: 0; letter-spacing: .3px; text-wrap: balance; }
+.panel-body { padding: 18px 24px; display: grid; gap: 12px; }
+.ex-card { background: var(--navy); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; }
+.ex-card .lab { font: 600 12px var(--body); letter-spacing: 1.2px; color: var(--gold); text-transform: uppercase; }
+.ex-card p { margin: 0; line-height: 1.55; font-size: 15.5px; }
+.ex-card .prompt { font: 400 16px/1.55 var(--body); color: var(--ice); background: rgba(235,244,255,.05); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 10px 14px; }
+.ex-card .prompt::before { content: "\201C"; color: var(--gold); font-weight: 700; margin-right: 2px; } .ex-card .prompt::after { content: "\201D"; color: var(--gold); font-weight: 700; margin-left: 2px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.weak .lab { color: var(--bad); } .strong .lab { color: var(--ok); }
+.tip { font-size: 13px; color: var(--muted); border-left: 3px solid var(--gold); padding-left: 10px; }
+.panel-foot { padding: 14px 24px 20px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; border-top: 1px solid var(--line); }
+.btn { font: 700 15px/1 var(--body); border-radius: 999px; padding: 13px 22px; cursor: pointer; border: 2px solid transparent; }
+.btn.primary { background: var(--gold); color: var(--gold-ink); }
+.btn.ghost { background: transparent; color: var(--ice); border-color: var(--line); }
+.countdown { flex: 1 1 160px; min-width: 0; display: grid; gap: 6px; font-size: 12px; color: var(--muted); }
+.countdown .cd-track { height: 4px; background: rgba(235,244,255,.12); border-radius: 2px; overflow: hidden; }
+.countdown .cd-fill { height: 100%; background: var(--gold); width: 100%; }
+
+/* quiz */
+.opts { display: grid; gap: 10px; }
+.opt { text-align: left; font: 600 16px/1.4 var(--body); color: var(--ice); background: var(--navy); border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer; display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+.opt .k { font: 700 13px var(--mono); width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--navy-3); color: var(--gold); }
+.opt:hover:not([disabled]) { border-color: var(--gold); }
+.opt.right { border-color: var(--ok); background: rgba(64,189,169,.12); }
+.opt.wrong { border-color: var(--bad); background: rgba(242,100,68,.12); }
+.opt[disabled] { cursor: default; }
+.feedback { border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; line-height: 1.5; }
+.feedback.ok { background: rgba(64,189,169,.14); border: 1px solid var(--ok); }
+.feedback.bad { background: rgba(242,100,68,.12); border: 1px solid var(--bad); }
+.feedback strong { font-family: var(--display); font-weight: 400; font-size: 24px; letter-spacing: .4px; }
+.feedback.ok strong { color: var(--ok); } .feedback.bad strong { color: var(--bad); }
+.shake { animation: shake .42s ease; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-9px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(4px); } }
+.pop { animation: pop .5s cubic-bezier(.2,1.6,.4,1); }
+@keyframes pop { 0% { transform: scale(.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+canvas.confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 60; }
+.score { font: 400 clamp(54px, 10vw, 96px)/1 var(--display); color: var(--gold); }
+.result-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.result-row span { font: 700 12px var(--mono); border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; }
+.result-row .r-ok { color: var(--ok); border-color: var(--ok); } .result-row .r-bad { color: var(--bad); border-color: var(--bad); }
+footer { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.rotate-tip { display: none; align-items: center; justify-content: center; gap: 8px; font-size: 12px; color: var(--muted); }
+/* phone portrait: compact chrome so the video gets the space */
+@media (max-width: 640px) {
+  body { padding-left: 10px; padding-right: 10px; padding-block: 10px 18px; }
+  .wrap { gap: 10px; }
+  .brand .logo { height: 24px; } h1 { font-size: 24px; } .tag { font-size: 9px; letter-spacing: 1.4px; }
+  .chapname { font-size: 11px; }
+  .stage { border-radius: 10px; }
+  .rail { grid-template-columns: auto 1fr auto auto; gap: 8px; row-gap: 2px; padding: 6px 10px; }
+  .rail .ib { height: 34px; min-width: 34px; padding: 0 8px; }
+  .rail .time { grid-row: 2; grid-column: 1 / -1; font-size: 11px; }
+  .mk { width: 12px; height: 12px; margin-left: -6px; top: 11px; border-width: 1.5px; }
+  .status .legend { display: none; }
+  .rotate-tip { display: flex; }
+}
+/* phone landscape, full screen, or theatre mode: video first */
+@media (orientation: landscape) and (max-height: 520px) {
+  body { padding: 4px 8px; }
+   header,  .status,  footer { display: none; }
+   .wrap { max-width: none; gap: 6px; }
+   .stage { width: min(100%, calc((100dvh - 62px) * 16 / 9)); margin-inline: auto; border-radius: 6px; }
+   .rail { width: min(100%, calc((100dvh - 62px) * 16 / 9)); margin-inline: auto; grid-template-columns: auto 1fr auto auto auto; padding: 4px 10px; gap: 10px; }
+   .rail .time { grid-row: auto; grid-column: auto; }
+  .rotate-tip { display: none; }
+}
+html:fullscreen body { padding: 4px 8px; }
+body.theater { padding: 4px 8px; }
+  html:fullscreen header, html:fullscreen .status, html:fullscreen footer { display: none; }
+  html:fullscreen .wrap { max-width: none; gap: 6px; }
+  html:fullscreen .stage { width: min(100%, calc((100dvh - 62px) * 16 / 9)); margin-inline: auto; border-radius: 6px; }
+  html:fullscreen .rail { width: min(100%, calc((100dvh - 62px) * 16 / 9)); margin-inline: auto; grid-template-columns: auto 1fr auto auto auto; padding: 4px 10px; gap: 10px; }
+  html:fullscreen .rail .time { grid-row: auto; grid-column: auto; }
+  body.theater header, body.theater .status, body.theater footer { display: none; }
+  body.theater .wrap { max-width: none; gap: 6px; }
+  body.theater .stage { width: min(100%, calc((100dvh - 62px) * 16 / 9)); margin-inline: auto; border-radius: 6px; }
+  body.theater .rail { width: min(100%, calc((100dvh - 62px) * 16 / 9)); margin-inline: auto; grid-template-columns: auto 1fr auto auto auto; padding: 4px 10px; gap: 10px; }
+  body.theater .rail .time { grid-row: auto; grid-column: auto; }
+html:fullscreen .rotate-tip, body.theater .rotate-tip { display: none; }
+
+@container (max-width: 560px) { .start p, .chips { display: none; } .start-inner { gap: 10px; } }
+@media (prefers-reduced-motion: reduce) { .hot { animation: none; } .shake, .pop { animation: none; } }
+
+/* series additions: XP counter, journey of modules, badge shelf, certificate */
+.xpbox { display: flex; align-items: baseline; gap: 6px; background: var(--navy-2); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; }
+.xp-num { font: 400 28px/1 var(--display); color: var(--gold); font-variant-numeric: tabular-nums; min-width: 2.2ch; text-align: right; }
+.xp-lab { font: 700 12px var(--mono); letter-spacing: 1.5px; color: var(--muted); }
+.xpbox.bump .xp-num { animation: bump .5s ease; }
+@keyframes bump { 40% { transform: scale(1.35); color: #fff; } }
+.journey { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.mod { position: relative; text-align: left; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: center; background: var(--navy-2); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; color: var(--ice); cursor: pointer; font: inherit; min-width: 0; }
+.mod .num { grid-row: span 2; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font: 400 20px/1 var(--display); background: var(--navy-3); color: var(--ice); }
+.mod .t { font: 600 15px/1.2 var(--body); min-width: 0; }
+.mod .s { font: 600 11.5px/1 var(--mono); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+.mod[aria-current="true"] { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold) inset; }
+.mod[aria-current="true"] .num { background: var(--gold); color: var(--gold-ink); }
+.mod.done .num { background: var(--ok); color: var(--navy); }
+.mod.done .s { color: var(--ok); }
+.mod[disabled] { cursor: not-allowed; opacity: .5; }
+.modhead { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.modtitle { font: 600 13px var(--body); color: var(--muted); }
+.shelf { background: var(--navy-2); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: grid; gap: 10px; }
+.shelf-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.linkbtn { background: none; border: 0; color: var(--muted); font: 600 12px var(--body); text-decoration: underline; cursor: pointer; padding: 4px; }
+.badges { display: flex; gap: 12px; flex-wrap: wrap; }
+.bdg { display: flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; border-radius: 999px; border: 1px dashed var(--line); color: var(--muted); font: 600 14px var(--body); }
+.bdg .medal { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--navy-3); font: 400 16px var(--display); }
+.bdg.on { border-style: solid; border-color: var(--gold); color: var(--ice); }
+.bdg.on .medal { background: radial-gradient(circle at 35% 30%, #ffe08a, var(--gold) 60%, #c98a10); color: var(--gold-ink); }
+.bdg.cert { cursor: pointer; }
+.hint { font-size: 14.5px; color: var(--ice); }
+.xpgain { font: 400 22px/1 var(--display); color: var(--gold); letter-spacing: .4px; }
+.big-badge { display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 14px; background: rgba(255,188,58,.08); border: 1px solid rgba(255,188,58,.4); }
+.big-badge .medal { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #ffe08a, var(--gold) 60%, #c98a10); font: 400 30px var(--display); color: var(--gold-ink); flex: none; }
+.big-badge b { display: block; font: 400 22px/1.1 var(--display); letter-spacing: .3px; color: var(--gold); }
+.field { display: grid; gap: 6px; }
+.field label { font: 600 13px var(--body); color: var(--muted); }
+.field input { font: 600 17px var(--body); color: var(--ice); background: var(--navy); border: 2px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.field input:focus-visible { outline: 3px solid var(--gold); outline-offset: 1px; }
+.cert-img { width: 100%; border-radius: 10px; border: 1px solid var(--line); display: block; }
+@media (max-width: 640px) {
+  header { flex-wrap: nowrap; } header .tag { display: none; }
+  .journey { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .mod { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; padding: 7px 6px; gap: 4px; }
+  .mod .num { grid-row: auto; width: 28px; height: 28px; font-size: 15px; }
+  .mod .t { font-size: 11.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+  .mod .s { display: none; }
+  .xpbox { padding: 5px 11px; flex: none; } .xp-num { font-size: 20px; }
+}
+@media (orientation: landscape) and (max-height: 520px) { .journey, .modhead, .shelf { display: none; } }
+html:fullscreen .journey, html:fullscreen .modhead, html:fullscreen .shelf, body.theater .journey, body.theater .modhead, body.theater .shelf { display: none; }
+
+a.btn { text-decoration: none; display: inline-flex; align-items: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <img class="logo" src="data:image/png;base64,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" alt="Skills Bank">
+      <div>
+        <div class="tag">Interactive series · People First Leadership</div>
+        <h1>Wellbeing <em>at Work</em></h1>
+      </div>
+    </div>
+    <div class="xpbox" aria-live="polite"><span class="xp-num" id="xpNum">0</span><span class="xp-lab">XP</span></div>
+  </header>
+
+  <nav class="journey" id="journey" aria-label="Series modules"></nav>
+
+  <div class="modhead"><div class="chapname" id="chapName">Ready</div><div class="modtitle" id="modTitle"></div></div>
+
+  <div class="stage" id="stage">
+    <video id="vid" preload="metadata" playsinline></video>
+    <div class="cap" id="cap" hidden></div>
+    <div class="buf" id="buf" hidden aria-label="Loading"></div>
+    <button class="hot" id="hot" type="button" hidden><span class="plus" aria-hidden="true">+</span><span id="hotLabel">Examples</span></button>
+    <div class="start" id="start">
+      <div class="start-inner">
+        <div class="tag" id="startTag">A Skills Bank original</div>
+        <h2 id="startTitle"></h2>
+        <p id="startSub">Watch, open the example cards, and answer scenario questions to earn XP.</p>
+        <div class="chips" id="startChips"></div>
+        <button class="big-play" id="startBtn" type="button">▶ Start</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rail" role="group" aria-label="Video controls">
+    <button class="ib" id="playBtn" type="button" aria-label="Play">▶</button>
+    <div class="bar" id="bar" aria-label="Seek">
+      <div class="track"></div><div class="fill" id="fill"></div>
+      <div id="marks"></div><div class="knob" id="knob"></div>
+    </div>
+    <span class="time" id="time">0:00 / 0:00</span>
+    <button class="ib" id="ccBtn" type="button" aria-pressed="false" title="Captions (off)">CC</button>
+    <button class="ib" id="fsBtn" type="button" title="Full screen" aria-label="Full screen">⛶</button>
+  </div>
+
+  <div class="rotate-tip">Turn your phone sideways, or tap ⛶, for a bigger video</div>
+
+  <div class="status">
+    <div class="legend"><span><span class="dot"></span>Examples: tap the gold button when it appears · gold dots jump to them</span><span><span class="dia"></span>Scenario question</span><span>CC: captions</span></div>
+    <div>Scenarios <b id="qScore">0 / 0</b> · Examples <b id="exCount">0 / 0</b></div>
+  </div>
+
+  <section class="shelf" aria-label="Badges">
+    <div class="shelf-head"><span class="tag">Your badges</span><button class="linkbtn" id="resetBtn" type="button">Start the series again</button></div>
+    <div class="badges" id="badges"></div>
+  </section>
+
+  <footer><span>© 2026 Skills Bank. All rights reserved.</span><span>Designed and produced by Skills Bank Learning &amp; Development</span></footer>
+</div>
+
+<div class="layer" id="layer" hidden></div>
+<canvas class="confetti" id="confetti" hidden></canvas>
+
+<script>
+const DATA = {"modules": [{"n": 1, "title": "Work–Life Fusion", "badge": "Boundary Keeper", "medal": "1", "src": "media/wb1.mp4", "duration": 231.83, "cues": [{"s": 1.0, "e": 2.67, "t": "A Skills Bank original."}, {"s": 4.45, "e": 6.59, "t": "It's ten forty-seven at night."}, {"s": 6.59, "e": 8.96, "t": "The client call ended hours ago..."}, {"s": 8.96, "e": 11.17, "t": "but the forecast is still on your mind,"}, {"s": 11.17, "e": 14.81, "t": "and tomorrow's target has already walked into tonight."}, {"s": 14.81, "e": 16.73, "t": "Does that sound familiar?"}, {"s": 16.73, "e": 18.66, "t": "This is work–life fusion."}, {"s": 18.66, "e": 21.89, "t": "And as a sales leader, you shape it more than you think."}, {"s": 22.95, "e": 26.18, "t": "Work–life fusion is more than working from home."}, {"s": 26.18, "e": 29.75, "t": "It's how work leaks into the rest of life, in three ways."}, {"s": 30.82, "e": 32.4, "t": "The first one is place."}, {"s": 32.4, "e": 36.25, "t": "Work moves into your home, your car, even the dinner table."}, {"s": 37.28, "e": 38.78, "t": "The second one is time."}, {"s": 38.78, "e": 41.51, "t": "Work crosses the hours it was scheduled for."}, {"s": 41.51, "e": 43.67, "t": "The early email, the weekend call."}, {"s": 44.72, "e": 47.85, "t": "And the third, the one we notice least, is attention."}, {"s": 47.85, "e": 50.56, "t": "The laptop is closed, the task is done..."}, {"s": 50.56, "e": 52.87, "t": "but your mind is still in the deal."}, {"s": 52.87, "e": 56.09, "t": "Each of these leaks takes a little recovery time with it."}, {"s": 56.09, "e": 57.51, "t": "One leak is nothing."}, {"s": 57.51, "e": 59.28, "t": "But every day, they add up."}, {"s": 60.35, "e": 62.88, "t": "Here's a trap many teams fall into."}, {"s": 62.88, "e": 65.74, "t": "Flexibility is not the same as control."}, {"s": 66.78, "e": 69.61, "t": "Flexibility means work can happen anywhere."}, {"s": 69.61, "e": 73.58, "t": "Control means I have a say in when work enters my life."}, {"s": 74.62, "e": 76.96, "t": "A salesperson can work from a beach..."}, {"s": 76.96, "e": 80.99, "t": "and still feel they must answer every message within minutes."}, {"s": 80.99, "e": 83.64, "t": "High flexibility, but low control."}, {"s": 83.64, "e": 86.52, "t": "And low control is what wears people down."}, {"s": 87.58, "e": 89.72, "t": "So why does switching off matter?"}, {"s": 89.72, "e": 95.31, "t": "A meta-analysis of eighty-six publications, with ninety-one independent samples,"}, {"s": 95.31, "e": 100.47, "t": "found that mentally detaching from work was associated with lower exhaustion,"}, {"s": 100.47, "e": 102.92, "t": "better wellbeing, and better sleep."}, {"s": 102.92, "e": 106.67, "t": "Associated means a strong link, not a magic switch."}, {"s": 107.72, "e": 109.75, "t": "The lesson for leaders is simple."}, {"s": 109.75, "e": 112.62, "t": "Recovery isn't the opposite of performance."}, {"s": 112.62, "e": 115.81, "t": "Recovery protects the capacity to perform."}, {"s": 115.81, "e": 118.27, "t": "Remember the leaky bucket from day one?"}, {"s": 118.27, "e": 121.15, "t": "Recovery is how the bucket gets refilled."}, {"s": 121.15, "e": 126.25, "t": "Skip it for long enough, and even your best people start every morning half empty."}, {"s": 127.28, "e": 129.17, "t": "Now for the part that's on you."}, {"s": 129.17, "e": 132.19, "t": "You send a message at ten forty-seven p.m."}, {"s": 132.19, "e": 133.81, "t": "You write: no rush."}, {"s": 133.81, "e": 135.7, "t": "But your team reads the timing."}, {"s": 135.7, "e": 139.67, "t": "My manager is working right now. Maybe I should be too."}, {"s": 139.67, "e": 141.95, "t": "Your timing can cancel your words."}, {"s": 143.02, "e": 144.73, "t": "Four habits fix this."}, {"s": 144.73, "e": 150.73, "t": "Habit one: define what is genuinely urgent, so not everything becomes an emergency."}, {"s": 151.78, "e": 157.54, "t": "Habit two: set response expectations. Tonight, tomorrow morning, or by Thursday."}, {"s": 158.58, "e": 164.9, "t": "Habit three: say when peak pressure ends, so a busy quarter doesn't quietly become the new normal."}, {"s": 165.95, "e": 171.23, "t": "And the fourth habit: respect disconnection, with your behaviour, not just your words."}, {"s": 171.23, "e": 174.76, "t": "Managerial signals teach people what counts as urgent..."}, {"s": 174.76, "e": 177.11, "t": "and whether switching off is truly allowed."}, {"s": 178.15, "e": 181.77, "t": "Sales has peaks. Quarter end, a launch, a big deal."}, {"s": 181.77, "e": 184.03, "t": "Pressure will rise, and that's normal."}, {"s": 184.03, "e": 187.88, "t": "The skill is managing the peak: before, during and after."}, {"s": 188.92, "e": 191.64, "t": "Before the peak, review last year's patterns,"}, {"s": 191.64, "e": 196.03, "t": "protect prospecting time, and plan approvals and handovers early."}, {"s": 197.08, "e": 199.78, "t": "During the peak, run short risk check-ins,"}, {"s": 199.78, "e": 205.39, "t": "triage with evidence instead of panic, and remove internal blockers for your team."}, {"s": 206.45, "e": 210.43, "t": "After the peak, review what failed, recognise who contributed,"}, {"s": 210.43, "e": 214.25, "t": "and deliberately restore recovery, and pipeline quality."}, {"s": 215.28, "e": 219.24, "t": "So, work–life fusion lives in place, time and attention."}, {"s": 219.24, "e": 221.32, "t": "Flexibility isn't control."}, {"s": 221.32, "e": 223.32, "t": "Recovery protects performance."}, {"s": 223.32, "e": 225.65, "t": "And your signals set the rules."}, {"s": 225.65, "e": 228.64, "t": "Next, we'll look at wellbeing in five dimensions."}], "chapters": [{"t": 4.0, "n": "The 10:47 PM problem"}, {"t": 22.5, "n": "Place, time, attention"}, {"t": 59.9, "n": "Flexibility vs control"}, {"t": 87.13, "n": "The evidence"}, {"t": 126.83, "n": "Your signals"}, {"t": 177.7, "n": "Peak periods"}, {"t": 214.83, "n": "Recap"}], "hot": {"e1": [30.62, 59.6], "e2": [66.58, 86.83], "e3": [142.82, 151.03], "e4": [165.75, 177.4], "e5": [151.58, 157.83], "e6": [188.72, 214.53]}, "examples": {"e1": {"label": "Examples: Fusion in a sales week", "kicker": "Work–Life Fusion", "title": "Place, time and attention in a sales week", "body": "<div class=\"ex-card\"><p>Place: reviewing the pipeline on your phone at your child&#x27;s football practice.</p></div><div class=\"ex-card\"><p>Time: answering a client&#x27;s 7 AM WhatsApp from bed, before the workday starts.</p></div><div class=\"ex-card\"><p>Attention: replaying a lost deal in your head through family dinner.</p></div>"}, "e2": {"label": "Examples: Flexibility vs control", "kicker": "Work–Life Fusion", "title": "Flexibility with and without control", "body": "<div class=\"ex-card\"><p>Low control: &#x27;Work remotely on Fridays&#x27; plus an unspoken rule to reply within 10 minutes.</p></div><div class=\"ex-card\"><p>Control: a team agreement of no replies expected 8 PM–8 AM, except named emergencies.</p></div>"}, "e3": {"label": "Examples: What 'urgent' means", "kicker": "Work–Life Fusion", "title": "What 'genuinely urgent' can mean in sales", "body": "<div class=\"ex-card\"><p>Urgent: a client escalation that risks a signed deal; a contract deadline that expires today.</p></div><div class=\"ex-card\"><p>Not urgent: tidying the CRM, a forecast note, feedback on a proposal due next week.</p></div>"}, "e4": {"label": "Examples: Messages that match", "kicker": "Work–Life Fusion", "title": "Messages that match your words", "body": "<div class=\"ex-card\"><p>Use Schedule send in Outlook, Gmail or Teams so a late-night message arrives at 9 AM.</p></div><div class=\"ex-card\"><p>Write the deadline into the message: &#x27;For Thursday&#x27;s review. No need to reply tonight.&#x27;</p></div>"}, "e5": {"label": "Examples: Response agreement", "kicker": "Work–Life Fusion", "title": "A response-expectations agreement", "body": "<div class=\"ex-card\"><p>Client issues: reply the same working day.</p></div><div class=\"ex-card\"><p>Internal requests: within 24 working hours.</p></div><div class=\"ex-card\"><p>After 8 PM and at weekends: only named emergencies, by phone call, not chat.</p></div>"}, "e6": {"label": "Examples: Quarter-end plan", "kicker": "Work–Life Fusion", "title": "A quarter-end peak plan", "body": "<div class=\"ex-card\"><p>Before: block two prospecting mornings a week; agree discount approvals in advance.</p></div><div class=\"ex-card\"><p>During: a 15-minute daily risk check-in; you chase internal blockers, not the reps.</p></div><div class=\"ex-card\"><p>After: a short review, public thanks by name, and a lighter first week of the new quarter.</p></div>"}}, "quiz": [{"id": "q1", "t": 59.55, "q": "Karim took his laptop on holiday and says, 'I didn't really work, I just checked email a few times a day.' Which dimensions of fusion are present?", "o": ["Only place", "Only time", "Place, time and attention", "None; checking email isn't work"], "a": 2, "why": "The laptop brings work into the place, the checks cross into personal time, and the thinking afterwards keeps it in his attention.", "hint": "Check each one: where, when, and what's on his mind."}, {"id": "q2", "t": 86.78, "q": "Ahmed, your top rep, can work from anywhere. He still replies to every message within minutes, even at midnight, 'in case the manager needs it.' What is the real issue?", "o": ["He needs more flexibility", "He has high flexibility but low control over when work enters his life", "He has poor time management", "Nothing; he is simply engaged"], "a": 1, "why": "Flexibility is about where work happens. Control is about when work is allowed into personal time. Ahmed has the first without the second.", "hint": "Separate where work can happen from when it is allowed into personal time."}, {"id": "q3", "t": 126.48, "q": "A rep says: 'If I stop thinking about work in the evening, my numbers will drop.' What does the evidence in this video suggest?", "o": ["He's right; detachment lowers results", "Detachment is linked with lower exhaustion and better sleep, which protect the capacity to perform", "Evenings make no difference", "Only managers need to detach"], "a": 1, "why": "The meta-analysis links detachment with lower exhaustion, better wellbeing and better sleep. Recovery protects performance.", "hint": "What did the meta-analysis link detachment with?"}, {"id": "q4", "t": 177.35, "q": "It's 11 PM. You've reviewed the forecast and want Sara to update three deals before Thursday's review. What is the best move?", "o": ["Send it now and write 'No rush'", "Schedule it for 9 AM and state the Thursday deadline", "Call her quickly so it's off your list", "Send it now; she can choose when to read it"], "a": 1, "why": "Timing is a signal. A scheduled message with a clear deadline makes your words and your behaviour say the same thing.", "hint": "What does the time a message arrives say, whatever the words?"}, {"id": "q5", "t": 214.48, "q": "Your team has worked late for two weeks to close the quarter on Thursday. What matters most to say now?", "o": ["Everyone needs to push harder", "When the peak ends, and what recovery will look like after it", "Nothing; they already know", "Leave will be limited next quarter too"], "a": 1, "why": "Stating when peak pressure ends stops a temporary push from quietly becoming the permanent norm.", "hint": "Which of the four habits stops a temporary push becoming the norm?"}]}, {"n": 2, "title": "Five Wellbeing Dimensions", "badge": "Wellbeing Reader", "medal": "2", "src": "media/wb2.mp4", "duration": 241.07, "cues": [{"s": 1.0, "e": 2.67, "t": "A Skills Bank original."}, {"s": 4.45, "e": 7.13, "t": "Ask a leader, how is your team's wellbeing?"}, {"s": 7.13, "e": 9.36, "t": "and most will say: it's good."}, {"s": 9.36, "e": 11.73, "t": "But wellbeing is not one score."}, {"s": 11.73, "e": 13.4, "t": "A rep can love the team..."}, {"s": 13.4, "e": 15.73, "t": "and still be physically exhausted."}, {"s": 15.73, "e": 19.97, "t": "Another can think clearly, inside a badly designed job."}, {"s": 19.97, "e": 24.19, "t": "Strength in one dimension does not cancel strain in another."}, {"s": 24.19, "e": 28.33, "t": "So let's look at five, with one diagnostic question for each."}, {"s": 29.38, "e": 31.11, "t": "Number one is physical."}, {"s": 31.11, "e": 34.15, "t": "The question isn't, is this person strong enough?"}, {"s": 34.15, "e": 37.61, "t": "It's: can the body sustain the way work is organised?"}, {"s": 38.65, "e": 42.11, "t": "Look at sleep and recovery, travel and working hours,"}, {"s": 42.11, "e": 45.75, "t": "breaks and physical strain, and safe working conditions."}, {"s": 46.78, "e": 51.94, "t": "A field rep who drives four hours between clients, then joins a late call,"}, {"s": 51.94, "e": 55.42, "t": "isn't lacking willpower. The schedule is the problem."}, {"s": 56.48, "e": 58.08, "t": "Number two is mental."}, {"s": 58.08, "e": 61.7, "t": "Can the mind focus, prioritise and think clearly?"}, {"s": 61.7, "e": 64.68, "t": "Four things in the work itself pull clarity down."}, {"s": 64.68, "e": 69.89, "t": "Excessive workload, conflicting priorities, low control, and unclear roles."}, {"s": 70.95, "e": 76.05, "t": "When everything is top priority, your team spends its best energy deciding..."}, {"s": 76.05, "e": 77.56, "t": "instead of selling."}, {"s": 77.56, "e": 81.78, "t": "A simple fix: agree one top priority per person each week."}, {"s": 81.78, "e": 85.66, "t": "And when something new arrives, decide together what moves down."}, {"s": 86.72, "e": 88.57, "t": "Number three is emotional."}, {"s": 88.57, "e": 92.92, "t": "Sales brings rejection, lost deals and hard conversations."}, {"s": 92.92, "e": 95.75, "t": "Emotional wellbeing doesn't mean, don't feel."}, {"s": 95.75, "e": 97.67, "t": "It comes down to four skills."}, {"s": 97.67, "e": 101.06, "t": "Recognise the emotion. Regulate the response."}, {"s": 101.06, "e": 104.56, "t": "Recover after setbacks. And ask for support."}, {"s": 104.56, "e": 108.9, "t": "Emotions carry information. They don't have to control the decision."}, {"s": 109.95, "e": 113.01, "t": "Picture a rep who loses a deal at four p.m."}, {"s": 113.01, "e": 117.34, "t": "Recognising sounds like: I'm frustrated, and a bit embarrassed."}, {"s": 117.34, "e": 121.84, "t": "Regulating means not firing off an angry email to the client."}, {"s": 121.84, "e": 125.74, "t": "Recovering is a short break, then a calm debrief tomorrow."}, {"s": 125.74, "e": 129.31, "t": "And support is talking it through with a colleague, or with you."}, {"s": 130.35, "e": 131.96, "t": "Number four is social."}, {"s": 131.96, "e": 134.51, "t": "A sales team can be digitally connected..."}, {"s": 134.51, "e": 136.22, "t": "and still feel alone."}, {"s": 136.22, "e": 140.53, "t": "A connected team needs belonging, mutual support between peers,"}, {"s": 140.53, "e": 143.73, "t": "respect even under pressure, and safe competition:"}, {"s": 143.73, "e": 149.11, "t": "competing on results without hiding information or undermining colleagues."}, {"s": 150.15, "e": 154.26, "t": "Ask yourself: does a new joiner know who to call when they're stuck?"}, {"s": 154.26, "e": 156.56, "t": "Do your top performers share what works?"}, {"s": 156.56, "e": 160.14, "t": "If people only meet on a dashboard, connection fades."}, {"s": 161.18, "e": 163.2, "t": "Number five is workplace."}, {"s": 163.2, "e": 167.74, "t": "This one shifts the conversation from, people should take care of themselves,"}, {"s": 167.74, "e": 169.88, "t": "to: how is the work designed?"}, {"s": 169.88, "e": 174.62, "t": "Wellbeing is built into work through workload, autonomy, role clarity,"}, {"s": 174.62, "e": 179.18, "t": "fair processes, support, and psychological and physical safety."}, {"s": 180.22, "e": 182.98, "t": "You can see weak design in small moments."}, {"s": 182.98, "e": 187.08, "t": "Follow-ups need chasing? Make the owner and due date visible."}, {"s": 188.12, "e": 193.56, "t": "Routine decisions keep coming back to you? Clarify what each salesperson can decide."}, {"s": 194.62, "e": 199.09, "t": "Missed commitments are left for you? Invite colleagues to question them too."}, {"s": 200.15, "e": 202.06, "t": "Here's the most practical habit."}, {"s": 202.06, "e": 205.62, "t": "Diagnose the dimension before choosing the solution."}, {"s": 206.65, "e": 212.11, "t": "Reduced sales activity might come from poor recovery, overload, or work design."}, {"s": 213.15, "e": 217.0, "t": "Silence in reviews: safety, confidence or clarity."}, {"s": 218.05, "e": 222.12, "t": "Forgotten follow-ups: overload, systems, or priorities."}, {"s": 223.15, "e": 226.86, "t": "Customer detachment: strain, or prolonged pressure."}, {"s": 226.86, "e": 229.15, "t": "Same symptom... different causes."}, {"s": 229.15, "e": 230.44, "t": "And different fixes."}, {"s": 231.48, "e": 234.35, "t": "Five dimensions, one question for each."}, {"s": 234.35, "e": 237.87, "t": "Next, what happens when strain lasts too long: burnout."}], "chapters": [{"t": 4.0, "n": "Not one score"}, {"t": 28.93, "n": "1 · Physical"}, {"t": 56.03, "n": "2 · Mental"}, {"t": 86.27, "n": "3 · Emotional"}, {"t": 129.9, "n": "4 · Social"}, {"t": 160.73, "n": "5 · Workplace"}, {"t": 199.7, "n": "Diagnose first"}, {"t": 231.03, "n": "Recap"}], "hot": {"e1": [38.45, 55.73], "e2": [70.75, 85.97], "e3": [109.75, 129.6], "e4": [149.95, 160.43], "e5": [180.02, 199.4], "e6": [206.45, 230.73]}, "examples": {"e1": {"label": "Examples: Physical: a field rep's week", "kicker": "Five Wellbeing Dimensions", "title": "Physical: redesigning a field rep's week", "body": "<div class=\"ex-card\"><p>Group client visits by area so driving drops.</p></div><div class=\"ex-card\"><p>No internal calls after a long travel day.</p></div><div class=\"ex-card\"><p>A recovery morning after overnight travel.</p></div>"}, "e2": {"label": "Examples: Mental: one top priority", "kicker": "Five Wellbeing Dimensions", "title": "Mental: ending 'everything is urgent'", "body": "<div class=\"ex-card\"><p>One agreed top priority per rep per week, written in the CRM.</p></div><div class=\"ex-card\"><p>When a new urgent request arrives, the leader decides what moves down.</p></div>"}, "e3": {"label": "Examples: Emotional: after a lost deal", "kicker": "Five Wellbeing Dimensions", "title": "Emotional: after a lost deal", "body": "<div class=\"ex-card\"><p>Same day: 10 minutes to name what happened and how it feels.</p></div><div class=\"ex-card\"><p>Next day: a calm debrief on &#x27;what can we learn?&#x27;, not &#x27;who failed?&#x27;.</p></div><div class=\"ex-card\"><p>Remind them where support is if it weighs more than usual.</p></div>"}, "e4": {"label": "Examples: Social: safe competition", "kicker": "Five Wellbeing Dimensions", "title": "Social: competition that keeps cooperation", "body": "<div class=\"ex-card\"><p>A shared &#x27;best practice of the week&#x27; slot in the team meeting.</p></div><div class=\"ex-card\"><p>Part of the reward tied to team results, not only individual targets.</p></div><div class=\"ex-card\"><p>A clear rule: leads are never hidden from colleagues.</p></div>"}, "e5": {"label": "Examples: Workplace: ownership", "kicker": "Five Wellbeing Dimensions", "title": "Workplace: clear ownership and decision rights", "body": "<div class=\"ex-card\"><p>Every follow-up has one named owner and a due date in the CRM.</p></div><div class=\"ex-card\"><p>Written decision rights, for example &#x27;discounts up to 5% without approval&#x27;.</p></div>"}, "e6": {"label": "Examples: Diagnose before you fix", "kicker": "Five Wellbeing Dimensions", "title": "Diagnose before you fix", "body": "<div class=\"ex-card\"><p>Activity dropped 30%. Ask before assuming: recovery? overload? a process that got harder?</p></div><div class=\"ex-card\"><p>Each answer leads to a different fix: rest, re-prioritising, or removing a blocker.</p></div>"}}, "quiz": [{"id": "q1", "t": 55.68, "q": "Your engagement survey shows strong team spirit, so a fellow manager says, 'Wellbeing is fine.' You know two reps sleep five hours a night because of travel. What principle applies?", "o": ["Team spirit means wellbeing is fine", "Strength in one dimension does not cancel strain in another", "Sleep is a personal issue", "Wait for the next survey"], "a": 1, "why": "Social strength doesn't erase physical strain. Wellbeing is not one score.", "hint": "Can one dimension's strength cover another's strain?"}, {"id": "q2", "t": 85.92, "q": "Nour gets five 'top priority' requests a week from three different managers and keeps freezing. Which dimension is under strain, and what is the likely cause?", "o": ["Emotional: she can't handle pressure", "Mental: conflicting priorities and unclear roles in the work design", "Physical: she needs more rest", "Social: she isn't a team player"], "a": 1, "why": "The mental dimension asks whether the mind can focus and prioritise. Conflicting priorities and unclear roles come from the work, not the person.", "hint": "Is the problem the person, or how the work is set up?"}, {"id": "q3", "t": 129.55, "q": "After losing a big deal, Tarek snaps at a colleague in the team meeting. What is the best leader response?", "o": ["Correct him in front of the team", "Ignore it; he'll get over it", "Talk privately: acknowledge the setback, help him recover, and offer support", "Tell him to leave emotions at home"], "a": 2, "why": "Emotional wellbeing is recognising, regulating, recovering and asking for support. A private, supportive conversation helps all four.", "hint": "Which response helps him recognise, regulate, recover and get support?"}, {"id": "q4", "t": 160.38, "q": "Your top two reps compete so hard they hide leads from each other. Which part of social wellbeing is missing?", "o": ["Belonging", "Safe competition that doesn't destroy cooperation", "Physical safety", "Role clarity"], "a": 1, "why": "Competition can stay, but not at the cost of hiding information or undermining colleagues.", "hint": "Competition isn't the problem. What is it destroying?"}, {"id": "q5", "t": 230.68, "q": "A rep's activity has dropped 30% this month. What should you do first?", "o": ["Raise their activity target", "Send them to a time-management course", "Find out which dimension is under strain before choosing a solution", "Give a formal warning"], "a": 2, "why": "The same symptom can come from recovery, overload or work design. Diagnose the dimension first.", "hint": "Same symptom, different causes. What comes before the fix?"}]}, {"n": 3, "title": "Burnout", "badge": "Early Noticer", "medal": "3", "src": "media/wb3.mp4", "duration": 206.97, "cues": [{"s": 1.0, "e": 2.66, "t": "A Skills Bank original."}, {"s": 4.45, "e": 7.19, "t": "Nobody wakes up burned out on a Tuesday."}, {"s": 7.19, "e": 9.69, "t": "Burnout rarely arrives all at once."}, {"s": 9.69, "e": 11.42, "t": "It builds, quietly."}, {"s": 11.42, "e": 14.63, "t": "And a pattern matters more than a single bad week."}, {"s": 15.68, "e": 17.79, "t": "It often starts with less energy:"}, {"s": 17.79, "e": 20.66, "t": "slower recovery after a demanding week."}, {"s": 21.72, "e": 26.59, "t": "Then comes more distance: from the work, from colleagues, even from customers."}, {"s": 27.65, "e": 30.4, "t": "Then growing doubt. Am I still good at this?"}, {"s": 30.4, "e": 34.16, "t": "Not everyone follows the same steps, in the same order."}, {"s": 34.16, "e": 35.92, "t": "What matters is the pattern."}, {"s": 36.98, "e": 39.64, "t": "Take Rana, a strong account manager."}, {"s": 39.64, "e": 43.53, "t": "At first, she needs longer to bounce back after client trips."}, {"s": 43.53, "e": 48.21, "t": "A few weeks later, she skips team calls and jokes cynically about targets."}, {"s": 48.21, "e": 52.54, "t": "Then she starts avoiding pricing decisions she used to make alone."}, {"s": 52.54, "e": 56.63, "t": "No single day looked alarming. Together, they tell a story."}, {"s": 57.68, "e": 63.11, "t": "The World Health Organization describes burnout as an occupational phenomenon,"}, {"s": 63.11, "e": 65.07, "t": "not a medical condition."}, {"s": 65.07, "e": 66.61, "t": "It has three dimensions."}, {"s": 67.65, "e": 70.53, "t": "Exhaustion: feeling depleted by work."}, {"s": 70.53, "e": 73.83, "t": "Mental distance, or cynicism, toward the job."}, {"s": 73.83, "e": 78.3, "t": "And reduced professional efficacy: a falling sense of being effective."}, {"s": 79.35, "e": 81.96, "t": "So burnout is more than being tired."}, {"s": 81.96, "e": 85.76, "t": "Notice that two of the three have nothing to do with tiredness."}, {"s": 85.76, "e": 92.79, "t": "Cynicism and lost confidence are easy to mistake for a bad attitude, or a performance problem."}, {"s": 93.85, "e": 97.3, "t": "So what might a leader notice? Look in three areas."}, {"s": 97.3, "e": 100.9, "t": "Energy: slower recovery, depletion, lower capacity."}, {"s": 101.95, "e": 105.12, "t": "Connection: cynicism, irritability, withdrawal."}, {"s": 106.18, "e": 110.07, "t": "Efficacy: self-doubt, decision avoidance, lower confidence."}, {"s": 111.12, "e": 114.41, "t": "And look for a pattern, not a personality label."}, {"s": 114.41, "e": 116.03, "t": "Not: she's so negative."}, {"s": 116.03, "e": 117.92, "t": "Instead: something has changed."}, {"s": 118.98, "e": 120.93, "t": "Which brings us to the boundary."}, {"s": 120.93, "e": 123.91, "t": "Do not diagnose from one difficult week."}, {"s": 123.91, "e": 125.56, "t": "Check four things instead."}, {"s": 126.62, "e": 128.97, "t": "Change from the person's own baseline."}, {"s": 128.97, "e": 130.71, "t": "Persistence over time."}, {"s": 130.71, "e": 132.82, "t": "Several signs appearing together."}, {"s": 132.82, "e": 135.37, "t": "And impact on work or relationships."}, {"s": 136.42, "e": 139.79, "t": "Your role is to notice, and open a conversation."}, {"s": 139.79, "e": 142.47, "t": "Not to make a clinical diagnosis."}, {"s": 142.47, "e": 146.1, "t": "A rep who's quiet after a bad week is having a bad week."}, {"s": 146.1, "e": 151.36, "t": "A rep who's been quiet for six weeks, missing deadlines and doubting every decision,"}, {"s": 151.36, "e": 152.74, "t": "is showing a pattern."}, {"s": 153.78, "e": 157.28, "t": "So what do you actually say, once you've noticed a pattern?"}, {"s": 157.28, "e": 161.82, "t": "That's exactly what we'll practise together in the session, with a real case."}, {"s": 162.88, "e": 164.69, "t": "Before then, try one thing."}, {"s": 164.69, "e": 167.15, "t": "This week, pick one person on your team."}, {"s": 167.15, "e": 169.49, "t": "Think about how they were a few months ago:"}, {"s": 169.49, "e": 172.31, "t": "their energy, their connection, their confidence."}, {"s": 172.31, "e": 174.03, "t": "Now compare that with today."}, {"s": 175.08, "e": 177.93, "t": "Don't label, and don't decide anything yet."}, {"s": 177.93, "e": 180.81, "t": "Just notice what has changed, and what hasn't."}, {"s": 180.81, "e": 182.57, "t": "Bring what you noticed with you."}, {"s": 183.62, "e": 186.84, "t": "Work–life fusion. Five dimensions. Burnout."}, {"s": 186.84, "e": 190.74, "t": "The best protection against burnout is work people can sustain:"}, {"s": 190.74, "e": 196.07, "t": "clear priorities, real recovery, and signals that let people switch off."}, {"s": 196.07, "e": 200.6, "t": "Notice early, ask well, and design work people can sustain."}, {"s": 200.6, "e": 203.76, "t": "We'll put this into practice together in your next session."}], "chapters": [{"t": 4.0, "n": "Not all at once"}, {"t": 15.23, "n": "How it builds"}, {"t": 57.23, "n": "Three dimensions"}, {"t": 93.4, "n": "What you may notice"}, {"t": 118.53, "n": "The boundary"}, {"t": 153.33, "n": "Before your session"}, {"t": 183.17, "n": "Series close"}], "hot": {"e1": [36.78, 56.93], "e2": [126.42, 135.67], "e3": [110.92, 118.23], "e4": [136.22, 153.03], "e5": [93.65, 110.37], "e6": [162.68, 182.87]}, "examples": {"e1": {"label": "Examples: A six-week pattern", "kicker": "Burnout", "title": "A six-week pattern (illustrative)", "body": "<div class=\"ex-card\"><p>Weeks 1–2: Rana needs longer to recover after client trips.</p></div><div class=\"ex-card\"><p>Weeks 3–4: she skips the optional team calls and sounds more cynical about targets.</p></div><div class=\"ex-card\"><p>Weeks 5–6: she avoids pricing decisions she used to make alone.</p></div>"}, "e2": {"label": "Examples: Their own baseline", "kicker": "Burnout", "title": "Compare with the person's own baseline", "body": "<div class=\"ex-card\"><p>Mona usually makes about 25 calls a day. For four weeks it has been about 12.</p></div><div class=\"ex-card\"><p>Compare her with her own normal, not with the top performer.</p></div>"}, "e3": {"label": "Examples: Pattern vs label", "kicker": "Burnout", "title": "Pattern language vs label language", "body": "<div class=\"ex-card\"><p>Label: &#x27;Ali has become negative.&#x27;</p></div><div class=\"ex-card\"><p>Pattern: &#x27;Since March Ali has missed three reviews and hesitates on decisions he used to make quickly.&#x27;</p></div>"}, "e4": {"label": "Examples: Tough week or pattern?", "kicker": "Burnout", "title": "A tough week or a pattern?", "body": "<div class=\"ex-card\"><p>Tough week: a lost deal, a short temper on Tuesday, back to normal by next week.</p></div><div class=\"ex-card\"><p>Pattern: six weeks of slower recovery, skipped reviews and hesitation on decisions that used to be easy.</p></div>"}, "e5": {"label": "Examples: Signs in sales terms", "kicker": "Burnout", "title": "The three areas in sales terms", "body": "<div class=\"ex-card\"><p>Energy: needs longer to bounce back after travel or a big pitch.</p></div><div class=\"ex-card\"><p>Connection: camera off, quiet in deal reviews, sharper tone with colleagues or customers.</p></div><div class=\"ex-card\"><p>Efficacy: asks for approval on decisions they used to own.</p></div>"}, "e6": {"label": "Examples: Your pre-session task", "kicker": "Burnout", "title": "Your pre-session task", "body": "<div class=\"ex-card\"><p>Pick one person. Write three lines: how they were a few months ago, and how they are now, for energy, connection and efficacy.</p></div><div class=\"ex-card\"><p>Facts only, no labels. Bring the note to the session.</p></div>"}}, "quiz": [{"id": "q1", "t": 93.05, "q": "Which of these is NOT one of the three recognised dimensions of burnout?", "o": ["Exhaustion", "Mental distance or cynicism", "Reduced professional efficacy", "A weak or negative personality"], "a": 3, "why": "Burnout is described through exhaustion, mental distance or cynicism, and reduced professional efficacy. Personality labels are not part of it, and they get in the way of noticing change.", "hint": "Two of the three aren't about tiredness, and none is about character."}, {"id": "q2", "t": 118.18, "q": "Which note describes a pattern rather than a personality label?", "o": ["'Ali is just a negative person.'", "'Since March, Ali has missed three reviews and hesitates on decisions he used to make quickly.'", "'Ali doesn't care any more.'", "'Ali has a weak personality.'"], "a": 1, "why": "A pattern is observable change over time. A label judges the person and closes the conversation.", "hint": "Which one describes what you could observe, with a time frame?"}, {"id": "q3", "t": 152.98, "q": "Hany had a terrible week: he lost a key deal and was irritable in two meetings. A colleague says, 'He's burning out.' What is the right view?", "o": ["Agree; irritability is a burnout sign", "It's too early: one difficult week isn't a pattern; watch for persistence and other signs", "Ignore it completely", "Tell HR he has burnout"], "a": 1, "why": "Do not diagnose from one difficult week. Persistence and several signs together carry more information.", "hint": "How long has this been going on?"}, {"id": "q4", "t": 153.1, "q": "Over six weeks, Rana recovers more slowly after trips, has stopped joining team calls, and now avoids pricing decisions she used to make. What should you do?", "o": ["Wait for her performance review", "Open a private conversation; this is a persistent change across energy, connection and efficacy", "Tell her she has burnout", "Give her bigger accounts to motivate her"], "a": 1, "why": "Change from her baseline, persistence, and several signs together form a pattern worth a conversation.", "hint": "Count the signs and the weeks, and compare with her own normal."}]}]};
+/* People First · Wellbeing at Work — interactive series player.
+   DATA (injected): { modules: [{ n, title, badge, medal, src, duration, cues, chapters, hot, examples, quiz }] }
+   Progress (XP, answers, badges) is kept on this device only. */
+const $ = (id) => document.getElementById(id);
+const MODS = DATA.modules;
+const vid = $("vid"), layer = $("layer"), hot = $("hot");
+const XP = { finish: 100, example: 10, first: 50, second: 20 };
+const KEY = "pf-wellbeing-series-v1";
+const fmt = (s) => { s = Math.max(0, Math.floor(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+/* ---------- saved progress (this device only) ---------- */
+const blank = () => ({ xp: 0, name: "", mods: MODS.map(() => ({ answered: {}, seen: {}, done: false })) });
+let P = blank();
+try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s && s.mods && s.mods.length === MODS.length) P = s; } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(P)); } catch (e) {} };
+const unlocked = (i) => i === 0 || P.mods[i - 1].done;
+const allDone = () => P.mods.every((m) => m.done);
+
+/* ---------- current module ---------- */
+let cur = 0, M = MODS[0], S = P.mods[0];
+const st = { modal: null, ccOn: false, started: false, ended: false, lastT: 0, wasPlaying: false, resumeAt: null, scrubbing: false, tries: {} };
+const DUR = () => M.duration;
+
+function gainXP(n) {
+  P.xp += n; save(); $("xpNum").textContent = P.xp;
+  const b = document.querySelector(".xpbox"); b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump");
+}
+
+function renderJourney() {
+  $("journey").innerHTML = MODS.map((m, i) => {
+    const s = P.mods[i], lock = !unlocked(i);
+    const label = lock ? "Locked · finish video " + i + " first" : s.done ? "Completed · " + m.badge : "Video " + (i + 1) + " · " + fmt(m.duration);
+    return `<button class="mod${s.done ? " done" : ""}" type="button" data-i="${i}" ${lock ? "disabled" : ""} aria-current="${i === cur}">
+      <span class="num">${s.done ? "✓" : i + 1}</span><span class="t">${esc(m.title)}</span><span class="s">${esc(label)}</span></button>`;
+  }).join("");
+  $("journey").querySelectorAll(".mod").forEach((b) => b.addEventListener("click", () => { if (!b.disabled) loadModule(+b.dataset.i, true); }));
+}
+
+function renderBadges() {
+  const items = MODS.map((m, i) => `<span class="bdg${P.mods[i].done ? " on" : ""}"><span class="medal">${P.mods[i].done ? m.medal : i + 1}</span>${esc(m.badge)}</span>`);
+  items.push(allDone() ? `<button class="bdg on cert" id="certBtn" type="button"><span class="medal">★</span>Certificate: open</button>` : `<span class="bdg"><span class="medal">★</span>Certificate (after all three)</span>`);
+  $("badges").innerHTML = items.join("");
+  if ($("certBtn")) $("certBtn").addEventListener("click", showCertificate);
+}
+
+function scoreLine() {
+  const right = Object.values(S.answered).filter((v) => v > 0).length;
+  $("qScore").textContent = right + " / " + M.quiz.length;
+  $("exCount").textContent = Object.keys(S.seen).length + " / " + Object.keys(M.hot).length;
+}
+
+function loadModule(i, fromUser) {
+  if (st.modal) closeLayer();
+  cur = i; M = MODS[i]; S = P.mods[i];
+  Object.assign(st, { started: false, ended: false, lastT: 0, resumeAt: null, tries: {} });
+  vid.pause(); vid.src = M.src; vid.load();
+  $("modTitle").textContent = "Video " + M.n + " of " + MODS.length + " · " + M.title;
+  $("startTitle").innerHTML = esc(M.title).replace(/^(\S+)/, "<em>$1</em>");
+  $("startTag").textContent = "A Skills Bank original · video " + M.n + " of " + MODS.length;
+  $("startChips").innerHTML = `<span class="chip">${fmt(M.duration)} video</span><span class="chip">${Object.keys(M.hot).length} example cards</span><span class="chip">${M.quiz.length} scenarios</span>`;
+  $("start").hidden = false; $("chapName").textContent = "Ready";
+  renderJourney(); renderBadges(); buildMarks(); scoreLine(); showPos(0);
+  try { history.replaceState(null, "", "#video-" + M.n); } catch (e) {}
+  if (fromUser) window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ---------- progress bar markers ---------- */
+function buildMarks() {
+  const m = $("marks"); m.innerHTML = "";
+  M.chapters.forEach((c) => { const d = document.createElement("div"); d.className = "chap"; d.style.left = (c.t / DUR() * 100) + "%"; d.title = c.n; m.appendChild(d); });
+  Object.entries(M.hot).forEach(([k, [s]]) => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "mk ex" + (S.seen[k] ? " seen" : ""); b.style.left = (s / DUR() * 100) + "%";
+    b.title = "Jump to: " + M.examples[k].label; b.setAttribute("aria-label", "Jump to: " + M.examples[k].label); b.dataset.t = s; m.appendChild(b);
+  });
+  M.quiz.forEach((q) => {
+    const d = document.createElement("div"); const r = S.answered[q.id];
+    d.className = "mk q" + (r === undefined ? "" : r > 0 ? " done-ok" : " done-bad"); d.style.left = (q.t / DUR() * 100) + "%"; d.title = "Scenario"; m.appendChild(d);
+  });
+}
+
+/* ---------- playback ---------- */
+function play() { st.started = true; $("start").hidden = true; vid.play().catch(() => {}); }
+function pause() { vid.pause(); }
+$("startBtn").addEventListener("click", () => { unlockAudio(); play(); });
+$("playBtn").addEventListener("click", () => { unlockAudio(); if (st.ended) restart(); else (vid.paused ? play() : pause()); });
+vid.addEventListener("play", () => { $("playBtn").textContent = "❚❚"; $("playBtn").setAttribute("aria-label", "Pause"); });
+vid.addEventListener("pause", () => { $("playBtn").textContent = "▶"; $("playBtn").setAttribute("aria-label", "Play"); });
+document.addEventListener("keydown", (e) => { if (e.code === "Space" && !st.modal && e.target === document.body) { e.preventDefault(); $("playBtn").click(); } });
+$("ccBtn").addEventListener("click", () => { st.ccOn = !st.ccOn; $("ccBtn").setAttribute("aria-pressed", String(st.ccOn)); $("ccBtn").title = st.ccOn ? "Captions (on)" : "Captions (off)"; tick(); });
+$("fsBtn").addEventListener("click", async () => {
+  const de = document.documentElement;
+  if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch (e) {} return; }
+  if (document.body.classList.contains("theater")) { document.body.classList.remove("theater"); return; }
+  if (de.requestFullscreen) { try { await de.requestFullscreen({ navigationUI: "hide" }); try { await screen.orientation.lock("landscape"); } catch (e) {} return; } catch (e) {} }
+  document.body.classList.add("theater"); window.scrollTo(0, 0);
+});
+document.addEventListener("fullscreenchange", () => { if (!document.fullscreenElement) { try { screen.orientation.unlock(); } catch (e) {} } });
+
+function seekTo(t) {
+  t = Math.max(0, Math.min(DUR() - 0.2, t));
+  if (st.modal === "ex") closeExamples();
+  vid.currentTime = t; showPos(t);
+  if (!st.started) { unlockAudio(); play(); } else if (vid.paused && !st.modal && !st.ended) play();
+}
+function showPos(t) { const pc = (t / DUR() * 100) + "%"; $("fill").style.width = pc; $("knob").style.left = pc; $("time").textContent = fmt(t) + " / " + fmt(DUR()); }
+(() => {
+  const bar = $("bar"); let drag = null;
+  const tAt = (x) => { const r = bar.getBoundingClientRect(); return Math.max(0, Math.min(1, (x - r.left) / r.width)) * DUR(); };
+  bar.addEventListener("pointerdown", (e) => {
+    if (st.modal === "quiz" || st.modal === "end") return;
+    const mk = e.target.closest(".mk.ex");
+    drag = { id: e.pointerId, x0: e.clientX, t: mk ? +mk.dataset.t + 0.1 : tAt(e.clientX), moved: false };
+    st.scrubbing = true; bar.setPointerCapture(e.pointerId); showPos(drag.t); e.preventDefault();
+  });
+  bar.addEventListener("pointermove", (e) => { if (!drag || e.pointerId !== drag.id) return; if (Math.abs(e.clientX - drag.x0) > 4) drag.moved = true; if (drag.moved) { drag.t = tAt(e.clientX); showPos(drag.t); } });
+  const end = (e) => { if (!drag || e.pointerId !== drag.id) return; const t = drag.t; drag = null; st.scrubbing = false; seekTo(t); };
+  bar.addEventListener("pointerup", end); bar.addEventListener("pointercancel", end);
+})();
+document.addEventListener("keydown", (e) => { if (st.modal || e.target !== document.body) return; if (e.key === "ArrowRight") { e.preventDefault(); seekTo(vid.currentTime + 5); } if (e.key === "ArrowLeft") { e.preventDefault(); seekTo(vid.currentTime - 5); } });
+
+let stallT = null;
+const showBuf = (on) => { $("buf").hidden = !on; clearTimeout(stallT); if (on) stallT = setTimeout(() => { if (!vid.paused && vid.readyState < 3) { const t = vid.currentTime; vid.currentTime = t + 0.01; vid.play().catch(() => {}); } }, 6000); };
+["waiting", "seeking"].forEach((ev) => vid.addEventListener(ev, () => { if (!vid.paused) showBuf(true); }));
+["playing", "canplay", "seeked", "pause"].forEach((ev) => vid.addEventListener(ev, () => { if (ev !== "seeked" || vid.readyState >= 3) showBuf(false); }));
+
+function tick() {
+  if (st.scrubbing) return;
+  const t = vid.currentTime; showPos(t);
+  const cue = st.ccOn ? M.cues.find((c) => t >= c.s && t < c.e) : null;
+  $("cap").hidden = !cue; if (cue) $("cap").textContent = cue.t;
+  const ch = M.chapters.filter((c) => t >= c.t).pop(); $("chapName").textContent = ch ? ch.n : "Welcome";
+  const k = Object.keys(M.hot).find((key) => t >= M.hot[key][0] && t <= M.hot[key][1]);
+  if (k && !st.modal && st.started) { hot.hidden = false; hot.dataset.k = k; $("hotLabel").textContent = M.examples[k].label; } else hot.hidden = true;
+  if (!st.modal && !vid.paused) {
+    const due = M.quiz.find((q) => S.answered[q.id] === undefined && q.t <= t && q.t > st.lastT - 0.05);
+    if (due) { if (t - st.lastT > 1.5) st.resumeAt = t; vid.pause(); vid.currentTime = due.t; openQuiz(due); }
+  }
+  st.lastT = t;
+}
+vid.addEventListener("timeupdate", tick);
+vid.addEventListener("seeked", () => { st.lastT = Math.min(st.lastT, vid.currentTime); tick(); });
+(function loop() { if (!vid.paused) tick(); requestAnimationFrame(loop); })();
+hot.addEventListener("click", () => openExamples(hot.dataset.k));
+vid.addEventListener("ended", showResults);
+
+function closeLayer() { clearInterval(cdTimer); cdTimer = null; layer.hidden = true; layer.innerHTML = ""; st.modal = null; }
+
+/* ---------- example cards with auto-resume ---------- */
+let cdTimer = null;
+function openExamples(k) {
+  const ex = M.examples[k]; st.wasPlaying = !vid.paused && st.started; pause();
+  if (!S.seen[k]) { S.seen[k] = true; gainXP(XP.example); }
+  scoreLine(); buildMarks();
+  st.modal = "ex"; hot.hidden = true;
+  const AUTO = 25;
+  layer.innerHTML = `<div class="panel pop" role="dialog" aria-modal="true" aria-labelledby="exTitle">
+    <div class="panel-head"><span class="kicker">${esc(ex.kicker)} · example card · +${XP.example} XP</span><h3 id="exTitle">${esc(ex.title)}</h3></div>
+    <div class="panel-body">${ex.body}</div>
+    <div class="panel-foot">
+      <button class="btn primary" id="exGo" type="button">${st.wasPlaying ? "Continue video" : "Close"}</button>
+      ${st.wasPlaying ? `<button class="btn ghost" id="exHold" type="button">Keep reading</button>
+      <div class="countdown" id="cd"><span id="cdText">Video continues in ${AUTO}s</span><div class="cd-track"><div class="cd-fill" id="cdFill"></div></div></div>` : ""}
+    </div></div>`;
+  layer.hidden = false; $("exGo").focus();
+  $("exGo").addEventListener("click", closeExamples);
+  if (st.wasPlaying) {
+    let left = AUTO * 10;
+    cdTimer = setInterval(() => { left--; $("cdFill").style.width = (left / (AUTO * 10) * 100) + "%"; $("cdText").textContent = "Video continues in " + Math.ceil(left / 10) + "s"; if (left <= 0) closeExamples(); }, 100);
+    $("exHold").addEventListener("click", () => { clearInterval(cdTimer); cdTimer = null; $("cd").innerHTML = "<span>Take your time. Press Continue when you are ready.</span>"; $("exHold").remove(); });
+  }
+}
+function closeExamples() { const p = st.wasPlaying; closeLayer(); if (p) play(); }
+layer.addEventListener("keydown", (e) => { if (e.key === "Escape" && st.modal === "ex") closeExamples(); });
+
+/* ---------- scenario questions: two tries ---------- */
+function openQuiz(q) {
+  st.modal = "quiz"; hot.hidden = true; st.tries[q.id] = 0; const n = M.quiz.indexOf(q) + 1;
+  layer.innerHTML = `<div class="panel pop" id="qPanel" role="dialog" aria-modal="true" aria-labelledby="qTitle">
+    <div class="panel-head"><span class="kicker">Scenario ${n} of ${M.quiz.length}${st.resumeAt ? " · answer to skip ahead" : ""} · first try +${XP.first} XP</span><h3 id="qTitle">${esc(q.q)}</h3></div>
+    <div class="panel-body"><div class="opts">${q.o.map((o, i) => `<button class="opt" type="button" data-i="${i}"><span class="k">${"ABCD"[i]}</span><span>${esc(o)}</span></button>`).join("")}</div><div id="fb"></div></div>
+    <div class="panel-foot" id="qFoot" hidden><button class="btn primary" id="qGo" type="button">Continue video</button></div></div>`;
+  layer.hidden = false; layer.querySelector(".opt").focus();
+  layer.querySelectorAll(".opt").forEach((b) => b.addEventListener("click", () => answer(q, +b.dataset.i)));
+}
+function answer(q, i) {
+  const ok = i === q.a; const opts = layer.querySelectorAll(".opt"); st.tries[q.id]++;
+  const first = st.tries[q.id] === 1;
+  if (!ok && first) {
+    opts[i].classList.add("wrong"); opts[i].disabled = true;
+    $("fb").innerHTML = `<div class="feedback bad"><strong>Not quite. Try once more.</strong><span class="hint">Hint: ${esc(q.hint)}</span></div>`;
+    $("qPanel").classList.remove("pop", "shake"); void $("qPanel").offsetWidth; $("qPanel").classList.add("shake"); chime(false);
+    return;
+  }
+  opts.forEach((b) => (b.disabled = true)); opts[q.a].classList.add("right"); if (!ok) opts[i].classList.add("wrong");
+  const pts = ok ? (first ? XP.first : XP.second) : 0;
+  S.answered[q.id] = ok ? (first ? 2 : 1) : 0; if (pts) gainXP(pts); save(); buildMarks(); scoreLine();
+  $("fb").innerHTML = ok
+    ? `<div class="feedback ok pop"><strong>${first ? "Correct! Well done." : "Got it on the second try."}</strong><span class="xpgain">+${pts} XP</span><span>${esc(q.why)}</span></div>`
+    : `<div class="feedback bad"><strong>Here's the answer.</strong><span>The best answer is <b>${"ABCD"[q.a]}: ${esc(q.o[q.a])}</b><br>${esc(q.why)}</span></div>`;
+  if (ok) { confetti(); chime(true); } else { $("qPanel").classList.remove("pop", "shake"); void $("qPanel").offsetWidth; $("qPanel").classList.add("shake"); chime(false); }
+  $("qFoot").hidden = false; $("qGo").focus();
+  $("qGo").addEventListener("click", () => {
+    closeLayer();
+    const target = st.resumeAt;
+    const next = target ? M.quiz.find((x) => S.answered[x.id] === undefined && x.t > q.t && x.t <= target) : null;
+    if (next) { vid.currentTime = next.t; openQuiz(next); return; }
+    st.resumeAt = null; vid.currentTime = target ? target : q.t + 0.05; st.lastT = vid.currentTime; play();
+  });
+}
+
+/* ---------- end of a module ---------- */
+function showResults() {
+  st.ended = true; const firstTime = !S.done;
+  M.quiz.forEach((q) => { if (S.answered[q.id] === undefined) S.answered[q.id] = 0; });
+  if (firstTime) { S.done = true; gainXP(XP.finish); }
+  save(); renderJourney(); renderBadges(); buildMarks(); scoreLine();
+  const right = Object.values(S.answered).filter((v) => v > 0).length, total = M.quiz.length;
+  const nextI = cur + 1 < MODS.length ? cur + 1 : null;
+  st.modal = "end";
+  layer.innerHTML = `<div class="panel pop" role="dialog" aria-modal="true" aria-labelledby="rTitle">
+    <div class="panel-head"><span class="kicker">Video ${M.n} complete${firstTime ? " · +" + XP.finish + " XP" : ""}</span><h3 id="rTitle">${esc(M.title)}: ${right === total ? "every scenario right." : right >= total - 1 ? "strong result." : "worth another look."}</h3></div>
+    <div class="panel-body">
+      <div class="big-badge"><span class="medal">${M.medal}</span><div><b>${esc(M.badge)}</b><span>${firstTime ? "Badge unlocked." : "Badge already on your shelf."}</span></div></div>
+      <div class="score">${right} / ${total}</div>
+      <div class="result-row">${M.quiz.map((q, i) => { const r = S.answered[q.id]; return `<span class="${r > 0 ? "r-ok" : "r-bad"}">S${i + 1} ${r === 2 ? "✓" : r === 1 ? "✓ 2nd try" : "✕"}</span>`; }).join("")}</div>
+      <p>Example cards opened: <b>${Object.keys(S.seen).length} of ${Object.keys(M.hot).length}</b>. Tap a gold dot on the timeline to jump back to one.</p>
+      <p class="tip">Total so far: <b>${P.xp} XP</b>.${nextI !== null ? " The next video is now unlocked." : ""}</p></div>
+    <div class="panel-foot">
+      ${nextI !== null ? `<button class="btn primary" id="nextBtn" type="button">Next: ${esc(MODS[nextI].title)}</button>` : `<button class="btn primary" id="certGo" type="button">Get your certificate</button>`}
+      <button class="btn ghost" id="again" type="button">Watch again</button></div></div>`;
+  layer.hidden = false; confetti(); chime(true);
+  if ($("nextBtn")) $("nextBtn").addEventListener("click", () => { closeLayer(); loadModule(nextI, true); });
+  if ($("certGo")) $("certGo").addEventListener("click", showCertificate);
+  $("again").addEventListener("click", restart);
+}
+function restart() { closeLayer(); st.ended = false; st.lastT = 0; st.resumeAt = null; vid.currentTime = 0; play(); }
+
+/* ---------- certificate (drawn on a canvas, saved as PNG) ---------- */
+function drawCert(name) {
+  const c = document.createElement("canvas"); c.width = 1600; c.height = 1130; const x = c.getContext("2d");
+  const g = x.createRadialGradient(800, 420, 100, 800, 560, 1000); g.addColorStop(0, "#23237a"); g.addColorStop(1, "#080828"); x.fillStyle = g; x.fillRect(0, 0, 1600, 1130);
+  x.strokeStyle = "#FFBC3A"; x.lineWidth = 6; x.strokeRect(40, 40, 1520, 1050); x.lineWidth = 1.5; x.strokeRect(58, 58, 1484, 1014);
+  x.textAlign = "center"; x.fillStyle = "#FFBC3A"; x.font = "600 26px 'IBM Plex Sans', Arial"; x.fillText("A SKILLS BANK ORIGINAL · CERTIFICATE OF COMPLETION", 800, 170);
+  x.fillStyle = "#EBF4FF"; x.font = "400 92px Anton, Impact, sans-serif"; x.fillText("Wellbeing at Work", 800, 300);
+  x.font = "500 30px 'IBM Plex Sans', Arial"; x.fillText("People First Leadership · interactive video series", 800, 355);
+  x.font = "500 30px 'IBM Plex Sans', Arial"; x.fillStyle = "#a9b4d6"; x.fillText("This certifies that", 800, 470);
+  x.fillStyle = "#FFFFFF"; x.font = "400 96px Anton, Impact, sans-serif"; x.fillText(name, 800, 590);
+  x.fillStyle = "#FFBC3A"; x.fillRect(500, 625, 600, 5);
+  x.fillStyle = "#EBF4FF"; x.font = "500 30px 'IBM Plex Sans', Arial";
+  x.fillText("completed Work–Life Fusion, Five Wellbeing Dimensions and Burnout,", 800, 700);
+  x.fillText("earning " + P.xp + " XP and all three badges.", 800, 745);
+  MODS.forEach((m, i) => { const cx = 520 + i * 280; x.beginPath(); x.arc(cx, 880, 58, 0, Math.PI * 2); x.fillStyle = "#FFBC3A"; x.fill(); x.lineWidth = 6; x.strokeStyle = "#fff"; x.stroke();
+    x.fillStyle = "#2a1d00"; x.font = "400 44px Anton, Impact, sans-serif"; x.fillText(m.medal, cx, 896); x.fillStyle = "#EBF4FF"; x.font = "600 22px 'IBM Plex Sans', Arial"; x.fillText(m.badge, cx, 975); });
+  x.fillStyle = "#a9b4d6"; x.font = "500 22px 'IBM Plex Sans', Arial"; x.fillText(new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) + " · © 2026 Skills Bank", 800, 1045);
+  return c;
+}
+function showCertificate() {
+  if (!allDone()) return;
+  st.modal = "cert"; pause();
+  layer.innerHTML = `<div class="panel pop" role="dialog" aria-modal="true" aria-labelledby="cTitle">
+    <div class="panel-head"><span class="kicker">All three videos complete · ${P.xp} XP</span><h3 id="cTitle">Your certificate</h3></div>
+    <div class="panel-body">
+      <form id="certForm" class="field"><label for="certName">Your name, as it should appear</label><input id="certName" maxlength="40" autocomplete="name" value="${esc(P.name || "")}" required></form>
+      <div id="certOut"></div></div>
+    <div class="panel-foot"><button class="btn primary" id="certMake" type="button">Create certificate</button><a class="btn ghost" id="certSave" hidden download="Skills-Bank-Wellbeing-certificate.png">Download PNG</a><button class="btn ghost" id="certClose" type="button">Close</button></div></div>`;
+  layer.hidden = false; $("certName").focus();
+  const make = (e) => { if (e) e.preventDefault(); const n = $("certName").value.trim(); if (!n) { $("certName").focus(); return; }
+    P.name = n; save(); const c = drawCert(n); const url = c.toDataURL("image/png");
+    $("certOut").innerHTML = `<img class="cert-img" alt="Certificate for ${esc(n)}" src="${url}">`; $("certSave").href = url; $("certSave").hidden = false; confetti(); chime(true); };
+  $("certForm").addEventListener("submit", make); $("certMake").addEventListener("click", make);
+  $("certClose").addEventListener("click", closeLayer);
+}
+
+$("resetBtn").addEventListener("click", () => {
+  if (st.modal) return;
+  st.modal = "reset";
+  layer.innerHTML = `<div class="panel pop" role="dialog" aria-modal="true" aria-labelledby="zTitle"><div class="panel-head"><span class="kicker">Start again</span><h3 id="zTitle">Clear your XP, badges and answers on this device?</h3></div>
+    <div class="panel-foot"><button class="btn primary" id="zYes" type="button">Yes, start again</button><button class="btn ghost" id="zNo" type="button">Keep my progress</button></div></div>`;
+  layer.hidden = false; $("zNo").focus();
+  $("zNo").addEventListener("click", closeLayer);
+  $("zYes").addEventListener("click", () => { P = blank(); save(); $("xpNum").textContent = 0; closeLayer(); loadModule(0, true); });
+});
+
+/* ---------- celebration ---------- */
+function confetti() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const c = $("confetti"); c.hidden = false; const x = c.getContext("2d"); const W = (c.width = innerWidth * devicePixelRatio), H = (c.height = innerHeight * devicePixelRatio);
+  const cols = ["#FFBC3A", "#EBF4FF", "#40BDA9", "#4D88E8", "#F26444"];
+  const Pt = Array.from({ length: 160 }, () => ({ x: W / 2 + (Math.random() - .5) * W * .3, y: H * .45, vx: (Math.random() - .5) * 22 * devicePixelRatio, vy: (-Math.random() * 20 - 8) * devicePixelRatio, s: (6 + Math.random() * 7) * devicePixelRatio, r: Math.random() * 6, vr: (Math.random() - .5) * .3, c: cols[Math.floor(Math.random() * cols.length)] }));
+  let f = 0; (function step() { x.clearRect(0, 0, W, H); Pt.forEach((p) => { p.vy += .55 * devicePixelRatio; p.x += p.vx; p.y += p.vy; p.vx *= .99; p.r += p.vr; x.save(); x.translate(p.x, p.y); x.rotate(p.r); x.fillStyle = p.c; x.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); x.restore(); });
+    if (++f < 150) requestAnimationFrame(step); else { x.clearRect(0, 0, W, H); c.hidden = true; } })();
+}
+let AC = null; function unlockAudio() { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); AC.resume(); } catch (e) {} }
+function chime(good) {
+  if (!AC) return; const t0 = AC.currentTime; const notes = good ? [523.25, 659.25, 783.99, 1046.5] : [311.13, 233.08];
+  notes.forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(); o.type = good ? "triangle" : "sine"; o.frequency.value = f; const s = t0 + i * (good ? .09 : .16);
+    g.gain.setValueAtTime(0, s); g.gain.linearRampToValueAtTime(.18, s + .02); g.gain.exponentialRampToValueAtTime(.001, s + (good ? .5 : .35)); o.connect(g).connect(AC.destination); o.start(s); o.stop(s + .6); });
+}
+
+/* ---------- boot: open the module in the link, else the first unfinished one ---------- */
+$("xpNum").textContent = P.xp;
+(() => {
+  const m = /^#video-([1-9])$/.exec(location.hash); let i = m ? +m[1] - 1 : P.mods.findIndex((x) => !x.done);
+  if (i < 0 || i >= MODS.length) i = 0; if (!unlocked(i)) i = P.mods.findIndex((x, k) => unlocked(k) && !x.done); if (i < 0) i = 0;
+  loadModule(i, false);
+})();
+
+</script>
+</body>
+</html>
